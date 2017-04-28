@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+	<script type="text/javascript">
+		(function(){
+
+			var lang = {
+				delimiters: {
+			        thousands: '.',
+			        decimal: ','
+			    },
+			    abbreviations: {
+			        thousand: 'mil',
+			        million: 'milhões',
+			        billion: 'bilhões',
+			        trillion: 'trilhões'
+			    },
+			    ordinal : function (number) {
+			        return 'º';
+			    },
+			    currency: {
+			        symbol: 'R$'
+			    }
+			}
+
+			numeral.register('locale','pt-br',lang);
+
+		})()
+
+
+		var dolar = numeral(5000).format('$0,0.00');
+		document.write("Dolar: " + dolar + "<br>");
+		document.write("Dolar Abreviado: " + numeral(dolar).format('0a') + "<br>");
+
+		numeral.locale('pt-br');
+		var real = numeral(5000).format('$0,0.00');
+		document.write("Real: " + real + "<br>");
+		document.write("Real Abreviado: " + numeral(real).format('0a') + "<br>");
+
+		var date = new Date();
+		var us_date = moment().format('L');
+		document.write("Data americana: " + us_date + "<br>");
+
+		moment.locale('pt-BR');
+		var br_date = moment().format('L');
+		document.write("Data Brasil: " + br_date + "<br>");
+	</script>
+</body>
+</html>
